@@ -32,7 +32,7 @@ describe('Post Dockable stations', () => {
             done()
         })
     })
-    it('should return a 404 because station does not exist', (done) => {
+    it('should return a 404 because station was not found', (done) => {
         chai.request(server)
         .get('/dockable/300/1')
         .end((err, result) => {

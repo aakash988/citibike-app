@@ -8,7 +8,7 @@ const getCitiStations = require('../src/stations-data/stationsData')
 chai.use(chaiHTTP)
 
 describe('Getting stations', () => {
-    it('should get all the stations from fetch', (done) => {
+    it('should get all stations', (done) => {
         chai.request(server)
         .get('/stations')
         .end((err, result) => {
@@ -26,7 +26,7 @@ describe('Getting stations', () => {
             done()
         })
     })
-    it('should return 20 results when using valid page number as query parameter', (done) => {
+    it('should return 20 results when using page as query parameter', (done) => {
         chai.request(server)
         .get('/stations?page=1')
         .end((err, result) => {
@@ -56,14 +56,14 @@ describe('Getting stations', () => {
     })
     it('should return a 404 status due to page requested exceeding page limit', (done) => {
         chai.request(server)
-        .get('/stations?page=50')
+        .get('/stations?page=500')
         .end((err, result) => {
             expect(result).to.have.status(404)
             expect(result.body).to.have.property('error').equal('Requested page not found')
             done()
         })
     })
-    it('should get all the stations that are in service', (done) => {
+    it('should get stations that are in service', (done) => {
         chai.request(server)
         .get('/stations/in-service')
         .end((err, result) => {
@@ -81,9 +81,9 @@ describe('Getting stations', () => {
             done()
         })
     })
-    it('should get all the stations that are in service from page 5', (done) => {
+    it('should get stations that are in service from page 1', (done) => {
         chai.request(server)
-        .get('/stations/in-service?page=5')
+        .get('/stations/in-service?page=1')
         .end((err, result) => {
             expect(result).to.have.status(200)
             expect(result).to.have.header('content-type', 'application/json; charset=utf-8')
@@ -108,7 +108,7 @@ describe('Getting stations', () => {
             done()
         })
     })
-    it('should get all the stations that are not in service', (done) => {
+    it('should get stations that are not in service', (done) => {
         chai.request(server)
         .get('/stations/not-in-service')
         .end((err, result) => {
@@ -126,7 +126,7 @@ describe('Getting stations', () => {
             done()
         })
     })
-    it('should get all the stations that are not in service on page 2', (done) => {
+    it('should get stations that are not in service from page 2', (done) => {
         chai.request(server)
         .get('/stations/not-in-service?page=2')
         .end((err, result) => {
@@ -153,9 +153,9 @@ describe('Getting stations', () => {
             done()
         })
     })
-    it('should get all the stations that have hudson in their name/address', (done) => {
+    it('should get stations that have franklin in their name/address', (done) => {
         chai.request(server)
-        .get('/stations/hudson')
+        .get('/stations/franklin')
         .end((err, result) => {
             expect(result).to.have.status(200)
             expect(result).to.have.header('content-type', 'application/json; charset=utf-8')
@@ -163,8 +163,8 @@ describe('Getting stations', () => {
             expect(result.body).to.be.an('array')
             expect(result.body[0]).to.be.an('object')
             expect(result.body[0]).to.not.have.property('id')
-            expect(result.body[0].stationName.toLowerCase()).include('hudson')
-            expect(result.body[0].stAddress1.toLowerCase()).include('hudson')
+            expect(result.body[0].stationName.toLowerCase()).include('franklin')
+            expect(result.body[0].stAddress1.toLowerCase()).include('franklin')
             expect(result.body[0]).to.have.property('stAddress2')
             expect(result.body[0]).to.have.property('totalDocks')
             expect(result.body[0]).to.have.property('availableBikes')
@@ -181,7 +181,7 @@ describe('Getting stations', () => {
             done()
         })
     })
-    it('should return a 404 status because the route was invalid', (done) => {
+    it('should return a 404 status due to invalid route', (done) => {
         chai.request(server)
         .get('/testing/stations')
         .end((err, result) => {
@@ -191,7 +191,7 @@ describe('Getting stations', () => {
             done()
         })
     })
-    it('should return a json of all the stations data from data source', async () => {
+    it('should return a json of stations data from data source', async () => {
         const stationData = await getCitiStations()
         expect(stationData).to.be.an('array')
         expect(stationData[0]).to.be.an('object')
