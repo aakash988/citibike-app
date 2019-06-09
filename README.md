@@ -80,7 +80,7 @@ As shown above, the response from this endpoint reveals whether or not a station
 
 **Example**: 
 
-Retrieving station information from page 1 of this endpoint:
+Retrieving information about stations on page 1:
 
 <img src = "images/getstations.png">
 
@@ -96,7 +96,7 @@ Retrieving station information from page 1 of this endpoint:
 
 **Example**: 
 
-Retrieving station information from page 1 of this endpoint:
+Retrieving information about stations that are in-service:
 
 <img src = "images/getstationsinservice.png">
 
@@ -110,7 +110,7 @@ Retrieving station information from page 1 of this endpoint:
 
 **Example**: 
 
-Retrieving station information from page 1 of this endpoint:
+Retrieving information about stations that are not in service:
 
 <img src = "images/getstationsnotinservice.png">
 
@@ -131,7 +131,7 @@ Retrieving station information from page 1 of this endpoint:
 
 **Example**: 
 
-Retrieving station information from page 1 of this endpoint:
+Retrieving information about stations that contain the string 'Franklin' in station name, address 1, or address 2:
 
 <img src = "images/getstationssearchstring.png">
 
@@ -154,6 +154,6 @@ Retrieving station information from page 1 of this endpoint:
 
 **Example**: 
 
-Retrieving station information from page 1 of this endpoint:
+ In this case, since the requested station id is 291 and the requested number of bikes to return is 1, the response indicates that station with id 291 can dock 1 bike based on the number of available docks at the station:
 
 <img src = "images/getdockable.png">
