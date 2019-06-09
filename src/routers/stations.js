@@ -1,5 +1,4 @@
 const express = require ('express')
-const fetch = require('node-fetch')
 const logger = require('../utils/logger')
 const jsonStations = require('../stations-data/stationsData')
 const router = new express.Router()
