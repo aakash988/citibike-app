@@ -7,7 +7,9 @@ The purpose of this project was to build an API using Citi Bike station data tha
 - Retrieve information about all in-service Citi Bike stations in NYC (with pagination using query parameter)
 - Retrieve information about all not-in-service Citi Bike stations in NYC (with pagination using query parameter)
 - Search for a Citi Bike station by using a search string
-- Retrieve infromation about whether or not a station is dockable by using station ID and the number of bikes that need to     be returned.
+- Retrieve infromation about whether or not a station is dockable by using station ID and the number of bikes that need to be returned.
+
+The data source for this project can be found at: https://feeds.citibikenyc.com/stations/stations.json
 
 # Installation
 
@@ -16,19 +18,17 @@ Follow these steps to install/run the application:
 1. Clone this github repository
 2. Navigate to the root directory of the project and run **npm install**
 3. After the modules have been installed, run **npm start** from the root directory
-4. The server should now be up. Use http://localhost:4000 to start making requests either in your web browser or in another    client application.
+4. Use http://localhost:4000 to start making requests either in your web browser or in another API Development Environment.
 
-To run tests for this application (after instaling modules), run **npm test** from the root directory.
-
-For this application you can either use an API development platform (such as Postman) or an internet browser to make requests.
+To run tests for this application, run **npm test** from the root directory.
 
 # How To Use
 
 ## Response Types
-There are two main routes that are used in this application: stations and dockable. 
+There are two main routes that are used in this application: **stations** and **dockable**. 
 
 ### Station Response Type
-The stations endpoint allows a user to retrieve information about a particular station or station(s). The object that is sent as a response when this endpoint is accessed looks like this: 
+The stations endpoint allows a user to retrieve information about a particular station or stations. This is the response structure when the endpoint is accessed:
 
 ```js
 {
@@ -51,7 +51,7 @@ As shown above, the response from this endpoint reveals basic information about 
 
 
 ### Dockable Response Type
-The dockable endpoint allows a user to check whether or not a station is dockable if the user gives a station ID and the number of bikes they want to return. The object that is sent as a response when this endpoint is accessed looks like this:
+The dockable endpoint allows a user to check whether or not a station is dockable if the user gives a station ID and the number of bikes they want to return. This is the response structure when the endpoint is accessed:
 
 ```js
 {
@@ -80,7 +80,7 @@ As shown above, the response from this endpoint reveals whether or not a station
 
 **Example**: 
 
-Retrieving information about stations on page 1:
+Retrieving information about stations from page 1:
 
 <img src = "images/getstations.png">
 
@@ -96,7 +96,7 @@ Retrieving information about stations on page 1:
 
 **Example**: 
 
-Retrieving information about stations that are in-service:
+Retrieving information about stations that are in service:
 
 <img src = "images/getstationsinservice.png">
 
@@ -123,7 +123,7 @@ Retrieving information about stations that are not in service:
 
 | Parameter | Description
 |:---------|:-----
-| **searchstring**| String that is given for this parameter is used to perform a case-insensitive search on the stationName, stAddress1, and stAddress2 to find a matching station.  
+| **searchstring**| String that is given for this parameter is used to perform a case-insensitive search on the stationName, stAddress1, and stAddress2 to find a matching station or stations.  
 
 **Method** : `GET`
 
@@ -146,7 +146,6 @@ Retrieving information about stations that contain the string 'Franklin' in stat
 |:---------|:-----
 | **stationid**| Value given for this parameter should be a valid station ID. This value is used to find a station with a matching station id.
 | **bikestoreturn**| Value given for this parameter should be the number of bikes that the user wishes to return. This number is used to check whether or not the station can dock the requested number of bikes.
-
 
 **Method** : `GET`
 
