@@ -1,7 +1,7 @@
 # Features
 This is an API for Citi Bikes that was built using Node.JS and Express.
 
-The purpose of this project was to build an API using Citi Bike station data that allows you to:  
+The purpose of this project was to build an API using an external data source that allows you to:  
 
 - Retrieve information about Citi Bike stations in NYC (with pagination using page query parameter)
 - Retrieve information about all in-service Citi Bike stations in NYC (with pagination using query parameter)
@@ -123,7 +123,7 @@ Retrieving information about stations that are not in service:
 
 | Parameter | Description
 |:---------|:-----
-| **searchstring**| String that is given for this parameter is used to perform a case-insensitive search on the stationName, stAddress1, and stAddress2 to find a matching station or stations.  
+| **searchstring**| String that is given for this parameter is used to perform a case-insensitive search on the stationName and stAddress1 to find a matching station or stations.  
 
 **Method** : `GET`
 
@@ -131,7 +131,7 @@ Retrieving information about stations that are not in service:
 
 **Example**: 
 
-Retrieving information about stations that contain the string 'Franklin' in station name, address 1, or address 2:
+Retrieving information about stations that contain the string 'Franklin' in stationName or stAddress1:
 
 <img src = "images/getstationssearchstring.png">
 

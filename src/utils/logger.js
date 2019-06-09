@@ -2,9 +2,7 @@ const { createLogger, format, transports } = require('winston');
 
 const logger = createLogger({
     format: format.combine(
-        format.timestamp({
-              format: 'YYYY-MM-DD HH:mm:ss'
-          }),
+        format.timestamp(),
         format.json(),
         format.printf(info => `${JSON.stringify({level: info.level, message: info.message, requestParameters: info.requestParameters, timestamp: info.timestamp})}`)
       ),
