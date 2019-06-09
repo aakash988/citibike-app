@@ -3,7 +3,7 @@ const chai = require('chai')
 const chaiHTTP = require('chai-http')
 const server = require('../src/app')
 const expect = chai.expect
-const jsonStations = require('../src/stations-data/stationsData')
+const getCitiStations = require('../src/stations-data/stationsData')
 
 chai.use(chaiHTTP)
 
@@ -192,7 +192,7 @@ describe('Getting stations', () => {
         })
     })
     it('should return a json of all the stations data from data source', async () => {
-        const stationData = await jsonStations()
+        const stationData = await getCitiStations()
         expect(stationData).to.be.an('array')
         expect(stationData[0]).to.be.an('object')
     })    

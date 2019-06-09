@@ -1,9 +1,7 @@
-'use strict'
 const chai = require('chai')
 const chaiHTTP = require('chai-http')
 const server = require('../src/app')
 const expect = chai.expect
-const jsonStations = require('../src/stations-data/stationsData')
 
 chai.use(chaiHTTP)
 

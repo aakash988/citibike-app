@@ -1,7 +1,6 @@
 const express = require ('express')
-const fetch = require('node-fetch')
 const logger = require('../utils/logger')
-const jsonStations = require('../stations-data/stationsData')
+const getCitiStations = require('../stations-data/stationsData')
 const router = new express.Router()
 
 router.get('/dockable/:stationid/:bikestoreturn', async (req, res) => {
@@ -24,7 +23,7 @@ router.get('/dockable/:stationid/:bikestoreturn', async (req, res) => {
 
     let stations;
     try {
-        stations = await jsonStations()
+        stations = await getCitiStations()
     }
     catch (error) {
         logger.error(error.message, {requestParameters: {

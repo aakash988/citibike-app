@@ -1,6 +1,6 @@
 const express = require ('express')
 const logger = require('../utils/logger')
-const jsonStations = require('../stations-data/stationsData')
+const getCitiStations = require('../stations-data/stationsData')
 const router = new express.Router()
 
 router.get('/stations', async (req, res) => {
@@ -21,13 +21,13 @@ router.get('/stations', async (req, res) => {
 
     let stations;
     try {
-        stations = await jsonStations()
+        stations = await getCitiStations()
     }
     catch (error) {
         logger.error(error.message, {requestParameters: {
             arguments: {...req.params},
             path: req.route.path
-        }});
+    }});
         return res.status(500).send({error: 'Unable to fetch data'})
     }
 
@@ -70,7 +70,7 @@ router.get('/stations/in-service', async (req, res) => {
 
     let stations;
     try {
-        stations = await jsonStations()
+        stations = await getCitiStations()
     }
     catch (error) {
         logger.error(error.message, {requestParameters: {
@@ -121,7 +121,7 @@ router.get('/stations/not-in-service', async (req, res) => {
 
     let stations;
     try {
-        stations = await jsonStations()
+        stations = await getCitiStations()
     }
     catch (error) {
         logger.error(error.message, {requestParameters: {
@@ -164,7 +164,7 @@ router.get('/stations/:searchstring', async (req, res) => {
     let searchString = req.params.searchstring.toLowerCase()
 
     try {
-        stations = await jsonStations()
+        stations = await getCitiStations()
     }
     catch (error) {
         logger.error(error.message, {requestParameters: {
