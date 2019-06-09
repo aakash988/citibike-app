@@ -85,7 +85,7 @@ Retrieving station information from page 1 of this endpoint:
 <img src = "images/getstations.png">
 
 
-<br /><br /><br />
+<br />
 
 
 **URL** : `/stations/in-service`
@@ -100,7 +100,7 @@ Retrieving station information from page 1 of this endpoint:
 
 <img src = "images/getstationsinservice.png">
 
-<br /><br /><br />
+<br />
 
 **URL** : `/stations/not-in-service`
 
@@ -114,7 +114,7 @@ Retrieving station information from page 1 of this endpoint:
 
 <img src = "images/getstationsnotinservice.png">
 
-<br /><br /><br />
+<br />
 
 
 **URL** : `/stations/:searchstring`
