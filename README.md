@@ -1,5 +1,5 @@
 # Features
-This is an API for Citi Bikes that was built using Node.JS and Express.
+This is an API for Citi Bikes that was built using Node.JS and Express. Mocha/Chai was used as the testing framework and Winston was used for logging.
 
 The purpose of this project was to build an API using an external data source that allows you to:  
 
