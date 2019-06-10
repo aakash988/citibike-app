@@ -1,5 +1,5 @@
 const fetch = require('node-fetch')
-const LRU = require("lru-cache"), cache = new LRU({ max: 10, maxAge: 300000})
+const LRU = require("lru-cache"), cache = new LRU({ max: 10, maxAge: 600000})
 
 const getCitiStations = async () => {
     const url = 'https://feeds.citibikenyc.com/stations/stations.json'
