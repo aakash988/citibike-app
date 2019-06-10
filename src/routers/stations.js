@@ -132,8 +132,8 @@ router.get('/stations/not-in-service', async (req, res) => {
     }
 
     let filteredStations = stations
-            .filter(station => station.statusValue !== "In Service")
-            .map(stationObject)
+        .filter(station => station.statusValue !== "In Service")
+        .map(stationObject)
 
     if (!pageNumber) {
         return res.status(200).send(filteredStations)

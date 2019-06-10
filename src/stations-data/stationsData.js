@@ -12,7 +12,7 @@ const getCitiStations = async () => {
         cache.set(url, jsonData.stationBeanList)
         return jsonData.stationBeanList
     }
-     catch (error) {
+    catch (error) {
         cache.reset()
         throw error
     }
