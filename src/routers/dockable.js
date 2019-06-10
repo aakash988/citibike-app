@@ -13,7 +13,7 @@ router.get('/dockable/:stationid/:bikestoreturn', async (req, res) => {
     const bikesToReturn = parseInt(req.params.bikestoreturn)
 
     //validate params
-    if (isNaN(stationID) || isNaN(bikesToReturn)) {
+    if (isNaN(stationID) || isNaN(bikesToReturn) || bikesToReturn <= 0) {
         logger.error('The request parameters are invalid', {requestParameters: {
             arguments: {...req.params},
             path: req.route.path
@@ -54,7 +54,7 @@ router.get('/dockable/:stationid/:bikestoreturn', async (req, res) => {
             message: 'There are enough available docks for the bikes requested.'
         })
     }
-    res.status(400).send({
+    res.status(200).send({
         dockable: false,
         message: 'There are not enough available docks for the bikes requested.'
     })

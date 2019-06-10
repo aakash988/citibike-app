@@ -6,7 +6,7 @@ const expect = chai.expect
 chai.use(chaiHTTP)
 
 describe('Post Dockable stations', () => {
-    it('should return a message to indicate that there are docks available for bikes requested', (done) => {
+    it('should return a response with dockable and message as properties', (done) => {
         chai.request(server)
         .get('/dockable/291/1')
         .end((err, result) => {
@@ -14,21 +14,10 @@ describe('Post Dockable stations', () => {
             expect(result).to.have.header('content-type', 'application/json; charset=utf-8')
             expect(result).to.be.json
             expect(result.body).to.be.an('object')
-            expect(result.body).to.have.property('dockable').to.be.true
-            expect(result.body).to.have.property('message').to.equal('There are enough available docks for the bikes requested.')
-            done()
-        })
-    })
-    it('should return a message to indicate that the bikes requested exceeds number of docks available', (done) => {
-        chai.request(server)
-        .get('/dockable/291/100')
-        .end((err, result) => {
-            expect(result).to.have.status(400)
-            expect(result).to.have.header('content-type', 'application/json; charset=utf-8')
-            expect(result).to.be.json
-            expect(result.body).to.be.an('object')
-            expect(result.body).to.have.property('dockable').to.be.false
-            expect(result.body).to.have.property('message').to.equal('There are not enough available docks for the bikes requested.')
+            expect(result.body).to.have.property('dockable')
+            expect(result.body.dockable).to.be.a('boolean')
+            expect(result.body).to.have.property('message')
+            expect(result.body.message).to.be.a('string')
             done()
         })
     })
